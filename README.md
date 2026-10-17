@@ -1,2 +1,1 @@
-# apiDelivery-Js
-REST API em JavaScript com CRUD completo, autenticação JWT e banco de dados.
+API REST desenvolvida em JavaScript, contendo CRUD completo de três entidades relacionadas, autenticação JWT e integração com banco de dados. Projeto desenvolvido para a disciplina de Programação Avançada para Web (PAW).
