@@ -1,4 +1,4 @@
-module.exports = class Cliente {
+module.exports = class Restaurante {
     constructor() {
         this._idRestaurante = null;
         this._nomeRestaurante = null;
@@ -15,7 +15,7 @@ module.exports = class Cliente {
         const parsed = Number(novoIdRestaurante);
 
         if (!Number.isInteger(parsed)) { 
-            throw new Error("idCargo deve ser um número inteiro.");
+            throw new Error("idRestaurante deve ser um número inteiro.");
         }
 
         if (parsed <= 0) {
