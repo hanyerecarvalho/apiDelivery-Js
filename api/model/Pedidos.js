@@ -1,13 +1,15 @@
 module.exports = class Pedidos {
+        #idPedido;
+        #valorTotal;
+        #idCliente;
+        #idRestaurante;
+
     constructor() {
-        this._idPedido = null;
-        this._valorTotal = null;
-        this._idCliente = null;
-        this._idRestaurante = null;
+        console.log("⬆️  Pedido.constructor()");
     }
 
     getIdPedido() {
-        return this._idPedido;
+        return this.#idPedido;
     }
 
     setIdPedido(novoIdPedido) {
@@ -21,11 +23,11 @@ module.exports = class Pedidos {
         if (parsed <= 0) {
             throw new Error("idPedido tem que ser maior que 0");
         }
-        return this._idPedido = parsed;
+        return this.#idPedido = parsed;
     }
 
     getValorTotal() {
-        return this._valorTotal;
+        return this.#valorTotal;
     }
     
     setValorTotal(novoValorTotal) {
@@ -36,11 +38,11 @@ module.exports = class Pedidos {
             throw new Error("valorTotal deve ser maior que 0");
         }
 
-        return this._valorTotal = valor;
+        return this.#valorTotal = valor;
     }
 
     getIdCliente() {
-        return this._idCliente;
+        return this.#idCliente;
     }
 
     setIdCliente(novoIdCliente) {
@@ -51,11 +53,11 @@ module.exports = class Pedidos {
             throw new Error("id deve ser maior que 0");
         }
 
-        this._idCliente = novoIdCliente;
+        this.#idCliente = novoIdCliente;
     }
 
     getIdRestaurante() {
-        return this._idRestaurante;
+        return this.#idRestaurante;
     }
 
     setIdRestaurante(novoIdRestaurante) {
@@ -66,6 +68,6 @@ module.exports = class Pedidos {
             throw new Error("idRestaurante deve ser maior que 0");
         }
 
-        this._idRestaurante = novoIdRestaurante
+        this.#idRestaurante = novoIdRestaurante
     }
 }

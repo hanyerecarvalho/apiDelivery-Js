@@ -5,7 +5,7 @@ module.exports = class Banco {
     static HOST = "127.0.0.1";
     static USER = "root";
     static PASSWORD = "";
-    static DATABASE = "deliveryApi";
+    static DATABASE = "delivery";
     static PORT = 3306;
     static CONEXAO = null;
 

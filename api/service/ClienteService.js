@@ -1,5 +1,5 @@
 const ClienteDAO = require("../dao/ClienteDAO");
-const Cliente = require("../models/Cliente");
+const Cliente = require("../model/Cliente");
 const ErrorResponse = require("../utils/ErrorResponse");
 
 module.exports = class ClienteService {
@@ -10,13 +10,13 @@ module.exports = class ClienteService {
         this.#clienteDAO = clienteDAODependency; 
     }
 
-
     createCliente = async (clienteJson) => {
         console.log("🟣 ClienteService.createCliente()");
 
         const cliente = new Cliente();
        
         cliente.nomeCliente = clienteJson.nomeCliente;
+        cliente.telefoneCliente = clienteJson.telefoneCliente;
 
         const resultado = await this.#clienteDAO.findByField("nomeCliente", cliente.nomeCliente);
 
@@ -45,13 +45,14 @@ module.exports = class ClienteService {
         return this.#clienteDAO.findById(cliente.idCliente);
     }
 
-    updateCliente = async (idCliente, nomeCliente) => {
+    updateCliente = async (idCliente, nomeCliente, telefoneCliente) => {
         console.log("🟣 ClienteService.updateCliente()");
        
         const cliente = new Cliente();
 
         cliente.idCliente = idCliente;
         cliente.nomeCliente = nomeCliente;
+        cliente.telefoneCliente = telefoneCliente;
 
         return this.#clienteDAO.update(cliente);
     }
