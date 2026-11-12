@@ -11,15 +11,7 @@ module.exports = class JwtMiddleware {
         const autorizado = jwt.validarToken(authorization);
 
         if (autorizado === true) {
-            const payload = jwt.payload;
-            const obj = {
-                email: payload.email,
-                role: payload.role,
-                name: payload.name,
-            };
-
-            request.headers.authorization = jwt.gerarToken(obj);
-
+            request.auth = jwt.payload;
             next(); 
         } else {
             const objResposta = {

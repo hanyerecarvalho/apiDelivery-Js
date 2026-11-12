@@ -15,9 +15,9 @@ module.exports = class RestauranteService {
 
         const restaurante = new Restaurante();
        
-        restaurante.setNomeRestaurante(restauranteJson.nomeRestaurante);
-        restaurante.setTelefoneRestaurante(restauranteJson.telefoneRestaurante);
-        restaurante.setEnderecoRestaurante(restauranteJson.enderecoRestaurante);
+        restaurante.nomeRestaurante = restauranteJson.nomeRestaurante;
+        restaurante.telefoneRestaurante = restauranteJson.telefoneRestaurante;
+        restaurante.enderecoRestaurante = restauranteJson.enderecoRestaurante;
 
         return this.#restauranteDAO.create(restaurante);
     }
@@ -32,18 +32,18 @@ module.exports = class RestauranteService {
         const restaurante = new Restaurante();
         
 
-        restaurante.setIdRestaurante(idRestaurante);
-        return this.#restauranteDAO.findById(restaurante.getIdRestaurante());
+        restaurante.idRestaurante = idRestaurante;
+        return this.#restauranteDAO.findById(restaurante.idRestaurante);
     }
 
     updateRestaurante = async (restauranteJson) => {
         console.log("🟣 RestauranteService.updateRestaurante()");
        
         const restaurante = new Restaurante();
-        restaurante.setIdRestaurante(restauranteJson.idRestaurante);
-        restaurante.setNomeRestaurante(restauranteJson.nomeRestaurante);
-        restaurante.setTelefoneRestaurante(restauranteJson.telefoneRestaurante);
-        restaurante.setEnderecoRestaurante(restauranteJson.enderecoRestaurante);
+        restaurante.idRestaurante = restauranteJson.idRestaurante;
+        restaurante.nomeRestaurante = restauranteJson.nomeRestaurante;
+        restaurante.telefoneRestaurante = restauranteJson.telefoneRestaurante;
+        restaurante.enderecoRestaurante = restauranteJson.enderecoRestaurante;
 
         return this.#restauranteDAO.update(restaurante);
     }
@@ -54,7 +54,7 @@ module.exports = class RestauranteService {
 
 
         const restaurante = new Restaurante();
-        restaurante.setIdRestaurante(idRestaurante);    
+        restaurante.idRestaurante = idRestaurante    
 
         return this.#restauranteDAO.delete(restaurante);
     }

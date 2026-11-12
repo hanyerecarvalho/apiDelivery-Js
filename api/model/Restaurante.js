@@ -7,11 +7,11 @@ module.exports = class Restaurante {
         console.log("⬆️  Restaurante.constructor()");
     }
 
-    getIdRestaurante() {
+    get idRestaurante() {
         return this.#idRestaurante;
     }
 
-    setIdRestaurante(novoIdRestaurante) {
+    set idRestaurante(novoIdRestaurante) {
 
         const parsed = Number(novoIdRestaurante);
 
@@ -25,30 +25,30 @@ module.exports = class Restaurante {
         return this.#idRestaurante = parsed;
     }
 
-    getNomeRestaurante() {
+    get nomeRestaurante() {
         return this.#nomeRestaurante;
     }
     
-    setNomeRestaurante(novoNomeRestaurante) {
+    set nomeRestaurante(novoNomeRestaurante) {
         if (typeof novoNomeRestaurante !== "string") {
             throw new Error("nomeRestaurante deve ser uma string");
         }
         const nome = novoNomeRestaurante.trim();
-        if (nome.lenght < 6) {
+        if (nome.length < 6) {
             throw new Error("nomeRestaurante deve ter mais de 6 caracteres");
         }
-        if (nome.lenght > 64) {
-            throw new Error("nomeRestaurante deve menos de 64 caracteres");
+        if (nome.length > 45) {
+            throw new Error("nomeRestaurante deve ter até 45 caracteres");
         }
 
         return this.#nomeRestaurante = nome;
     }
 
-    getTelefoneRestaurante() {
+    get telefoneRestaurante() {
         return this.#telefoneRestaurante;
     }
 
-    setTelefoneRestaurante(novoTelefoneRestaurante) {
+    set telefoneRestaurante(novoTelefoneRestaurante) {
         if (typeof novoTelefoneRestaurante !== "string") {
             throw new Error("telefoneRestaurante deve ser uma string");
         }
@@ -63,11 +63,11 @@ module.exports = class Restaurante {
         return this.#telefoneRestaurante = telefone;
     }
 
-    getEnderecoRestaurante() {
+    get enderecoRestaurante() {
         return this.#enderecoRestaurante;
     }
 
-    setEnderecoRestaurante(novoEnderecoRestaurante) {
+    set enderecoRestaurante(novoEnderecoRestaurante) {
         if (typeof novoEnderecoRestaurante !== "string") {
             throw new Error("enderecoRestaurante deve ser uma string");
         }
@@ -76,8 +76,8 @@ module.exports = class Restaurante {
         if (endereco.length < 5) {
             throw new Error("enderecoRestaurante deve ter no minimo 5 caracteres");
         }
-        if (endereco.length > 24) {
-            throw new Error("enderecoRestaurante deve ter no maximo 24 caracteres");
+        if (endereco.length > 100) {
+            throw new Error("enderecoRestaurante deve ter até 100 caracteres");
         }
         return this.#enderecoRestaurante = endereco;
     }

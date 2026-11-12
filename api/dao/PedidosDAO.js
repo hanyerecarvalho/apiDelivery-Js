@@ -40,8 +40,8 @@ module.exports = class PedidosDAO {
     update = async (objPedidoModel) => {
         console.log("🟢 PedidoDAO.update()");
 
-        const SQL = "UPDATE pedidos SET valorTotal, idCliente, idRestaurante = ? WHERE idPedido = ?;";
-        const params = [objPedidoModel.valorTotal, objPedidoModel.idCliente, objPedidoModel.idRestaurante];
+        const SQL = "UPDATE pedidos SET valorTotal = ?, idCliente = ?, idRestaurante = ? WHERE idPedido = ?;";
+        const params = [objPedidoModel.valorTotal, objPedidoModel.idCliente, objPedidoModel.idRestaurante, objPedidoModel.idPedido];
 
         const pool = await this.#database.getPool();
         const [resultado] = await pool.execute(SQL, params);

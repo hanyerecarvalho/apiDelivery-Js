@@ -62,7 +62,8 @@ module.exports = class ClienteService {
 
 
         const cliente = new Cliente();
-        cliente.idCliente = idCliente;    
+        cliente.idCliente = idCliente;
+         
 
         return this.#clienteDAO.delete(cliente);
     }

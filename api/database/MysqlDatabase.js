@@ -19,6 +19,8 @@ module.exports = class Banco {
             port: Banco.PORT,
         });
 
+        Banco.CONEXAO.getPool = async () => Banco.CONEXAO.promise();
+
         Banco.CONEXAO.connect((erro) => {
             if (erro) {
                 const objResposta = {

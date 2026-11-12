@@ -15,9 +15,9 @@ module.exports = class PedidoService {
 
         const pedido = new Pedido();
        
-        pedido.setValorTotal(pedidoJson.valorTotal);
-        pedido.setIdCliente(pedidoJson.idCliente);
-        pedido.setIdRestaurante(pedidoJson.idRestaurante);
+        pedido.valorTotal = pedidoJson.valorTotal;
+        pedido.idCliente = pedidoJson.idCliente;
+        pedido.idRestaurante = pedidoJson.idRestaurante;
 
         return this.#pedidoDAO.create(pedido);
     }
@@ -31,19 +31,19 @@ module.exports = class PedidoService {
         console.log("🟣 PedidoService.findById()");
         const pedido = new Pedido();
     
-        pedido.setIdPedido(idPedido);
+        pedido.idPedido = idPedido;
 
-        return this.#pedidoDAO.findById(pedido.getIdPedido());
+        return this.#pedidoDAO.findById(pedido.idPedido);
     }
 
     updatePedido = async (pedidoJson) => {
         console.log("🟣 PedidoService.updatePedido()");
        
         const pedido = new Pedido();
-        pedido.setIdPedido(pedidoJson.idPedido);
-        pedido.setValorTotal(pedidoJson.valorTotal);
-        pedido.setIdCliente(pedidoJson.idCliente);
-        pedido.setIdRestaurante(pedidoJson.idRestaurante);
+        pedido.idPedido = pedidoJson.idPedido;
+        pedido.valorTotal = pedidoJson.valorTotal;
+        pedido.idCliente = pedidoJson.idCliente;
+        pedido.idRestaurante = pedidoJson.idRestaurante;
 
         return this.#pedidoDAO.update(pedido);
     }
@@ -54,7 +54,7 @@ module.exports = class PedidoService {
 
 
         const pedido = new Pedido();
-        pedido.setIdPedido(idPedido); 
+        pedido.idPedido = idPedido;
 
         return this.#pedidoDAO.delete(pedido);
     }

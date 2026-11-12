@@ -10,7 +10,7 @@ module.exports = class ClienteRoteador {
     #jwtMiddleware;
 
     constructor(routerDependency, jwtMiddlewareDependency, clienteMiddlewareDependency, clienteControllerDependency) {
-        console.log("⬆️  CargoRoteador.constructor()");
+        console.log("⬆️  ClienteRoteador.constructor()");
 
         this.#router = routerDependency;
         this.#jwtMiddleware = jwtMiddlewareDependency;

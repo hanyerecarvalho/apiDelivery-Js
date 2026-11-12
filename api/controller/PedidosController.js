@@ -13,7 +13,7 @@ module.exports = class PedidosControl {
         try {
             const pedidoBodyRequest = request.body.pedido;
 
-            const novoId = await this.#pedidoService.createCargo(pedidoBodyRequest);
+            const novoId = await this.#pedidoService.createPedido(pedidoBodyRequest);
 
             const objResposta = {
                 success: true,
@@ -21,8 +21,8 @@ module.exports = class PedidosControl {
                 data: {
                     pedidos: [{
                         idPedido: novoId,
-                        nomeCargo: pedidoBodyRequest.nomePedido,
-                        telefonePedido: pedidoBodyRequest.telefonePedido
+                        valorTotal: pedidoBodyRequest.valorTotal,
+                        idCliente: pedidoBodyRequest.idCliente, idRestaurante: pedidoBodyRequest.idRestaurante
                     }]
                 }
             };
@@ -80,7 +80,7 @@ module.exports = class PedidosControl {
             const valorTotal = request.body.pedido.valorTotal;
             const idCliente = request.body.pedido.idCliente;
             const idRestaurante = request.body.pedido.idRestaurante;
-            const atualizou = await this.#pedidoService.updatePedido(pedidoId, valorTotal, idCliente, idRestaurante);
+            const atualizou = await this.#pedidoService.updatePedido({ idPedido: pedidoId, valorTotal, idCliente, idRestaurante });
 
             if (atualizou) {
                 return response.status(200).send({
@@ -118,10 +118,10 @@ module.exports = class PedidosControl {
         console.log("🔵 PedidoControle.destroy()");
         try {
             const pedidoId = request.params.idPedido;
-            const excluiu = this.#pedidoService.deletePedido(pedidoId);
+            const excluiu = await this.#pedidoService.deletePedido(pedidoId);
 
             if (excluiu) {
-                return response.status(204).send({
+                return response.status(200).send({
                     success: true,
                     message: 'Excluido com sucesso com sucesso',
                     data: {

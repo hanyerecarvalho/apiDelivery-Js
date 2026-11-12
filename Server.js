@@ -1,4 +1,8 @@
 const express = require("express");
+const FuncionarioDAO = require("./api/dao/FuncionarioDAO");
+const FuncionarioService = require("./api/service/FuncionarioService");
+const FuncionarioController = require("./api/controller/FuncionarioController");
+const FuncionarioRoteador = require("./api/router/FuncionarioRoteador");
 const cors = require("cors")
 
 const ErrorResponse = require("./api/utils/ErrorResponse"); 
@@ -79,10 +83,19 @@ module.exports = class Server {
         this.#database = MysqlDatabase.getConexao();
 
         this.beforeRouting(); // Middleware executado antes das rotas
+        this.setupFuncionario();
         this.setupCliente();
         this.setupRestaurantes();
         this.setupPedidos();
         this.setupErrorMiddleware(); // Configura tratamento global de erros
+    }
+
+    setupFuncionario = () => {
+        const dao = new FuncionarioDAO(this.#database.promise());
+        const service = new FuncionarioService(dao);
+        const controller = new FuncionarioController(service);
+        const roteador = new FuncionarioRoteador(express.Router(), controller);
+        this.#app.use("/api/v1/funcionarios", roteador.createRoutes());
     }
 
     setupCliente = () => {

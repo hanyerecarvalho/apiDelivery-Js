@@ -2,43 +2,58 @@ module.exports = class Cliente {
     #idCliente;
     #nomeCliente;
     #telefoneCliente;
+
     constructor() {
         console.log("⬆️  Cliente.constructor()");
     }
 
-    getIdCliente() {
+    get idCliente() {
         return this.#idCliente;
     }
 
-    setIdCliente(novoIdCliente) {
-        if (novoIdCliente < 0) {
+    set idCliente(value) {
+        const parsed = Number(value);
+        if (!Number.isInteger(parsed)) {
+            throw new Error("idCliente deve ser um numero inteiro");
+        }
+        if (parsed < 0) {
             throw new Error("idCliente tem que ser maior que 0");
         }
-        return this.#idCliente = novoIdCliente;
+        this.#idCliente = parsed;
     }
 
-    getNomeCliente() {
+    get nomeCliente() {
         return this.#nomeCliente;
     }
     
-    setNomeCliente(novoNomeCliente) {
-        if (novoNomeCliente.lenght > 60) {
-            throw new Error("idRestaurante tem que ter ate 60 caracteres");
+    set nomeCliente(value) {
+        if (typeof value !== "string") {
+            throw new Error("nomeCliente deve ser uma string.");
         }
-        return this.#nomeCliente = novoNomeCliente;
+
+        const nome = value.trim();
+        if (nome.length > 45) {
+            throw new Error("nomeCliente deve ter até 45 caracteres");
+        }
+        this.#nomeCliente = nome;
     }
 
-    getTelefoneCliente() {
+    get telefoneCliente() {
         return this.#telefoneCliente;
     }
 
-    setTelefoneCliente(novoTelefoneCliente) {
-        if (novoTelefoneCliente.lenght < 5) {
+    set telefoneCliente(value) {
+        if (typeof value !== "string") {
+            throw new Error("telefoneCliente deve ser uma string.");
+        }
+
+        const telefone = value.trim();
+        if (telefone.length < 5) {
             throw new Error("telefoneCliente deve ter mais de 5 caracteres");
         }
-        if (novoTelefoneCliente.lenght < 18) {
+        if (telefone.length > 18) {
             throw new Error("telefoneCliente deve ter no maximo 18 caracteres");
         }
-        return this.#telefoneCliente = novoTelefoneCliente;
+        this.#telefoneCliente = telefone;
     }
 }

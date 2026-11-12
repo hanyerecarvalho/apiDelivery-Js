@@ -14,15 +14,15 @@ module.exports = class ClienteControl {
         try {
             const clienteBodyRequest = request.body.cliente;
 
-            const novoId = await this.#clienteService.createCargo(clienteBodyRequest);
+            const novoId = await this.#clienteService.createCliente(clienteBodyRequest);
 
             const objResposta = {
                 success: true,
                 message: "Cadastro realizado com sucesso",
                 data: {
-                    cargos: [{
+                    clientes: [{
                         idCliente: novoId,
-                        nomeCargo: clienteBodyRequest.nomeCliente,
+                        nomeCliente: clienteBodyRequest.nomeCliente,
                         telefoneCliente: clienteBodyRequest.telefoneCliente
                     }]
                 }
@@ -116,10 +116,10 @@ module.exports = class ClienteControl {
         console.log("🔵 ClienteControle.destroy()");
         try {
             const clienteId = request.params.idCliente;
-            const excluiu = this.#clienteService.deleteCliente(clienteId);
+            const excluiu = await this.#clienteService.deleteCliente(clienteId);
 
             if (excluiu) {
-                return response.status(204).send({
+                return response.status(200).send({
                     success: true,
                     message: 'Excluido com sucesso com sucesso',
                     data: {

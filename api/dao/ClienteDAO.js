@@ -40,7 +40,7 @@ module.exports = class ClienteDAO {
     update = async (objClienteModel) => {
         console.log("🟢 ClienteDAO.update()");
 
-        const SQL = "UPDATE clientes SET nomeCliente, telefoneCliente = ? WHERE idCliente = ?;";
+        const SQL = "UPDATE clientes SET nomeCliente = ?, telefoneCliente = ? WHERE idCliente = ?;";
         const params = [objClienteModel.nomeCliente, objClienteModel.telefoneCliente, objClienteModel.idCliente];
 
         const pool = await this.#database.getPool();

@@ -12,13 +12,13 @@ module.exports = class MeuTokenJWT {
     #payload;       
 
     constructor() {
-        this.#key = "x9S4q0v+V0IjvHkG20uAxaHx1ijj+q1HWjHKv+ohxp/oK+77qyXkVj/l4QYHHTF3";
+        this.#key = process.env.JWT_SECRET; if (!this.#key || this.#key.length < 32) throw new Error("Configure JWT_SECRET com pelo menos 32 caracteres.");
         this.#alg = "HS256";
         this.#type = "JWT";
         this.#iss = "http://localhost";
         this.#aud = "http://localhost";
         this.#sub = "acesso_sistema";
-        this.#duracaoToken = 3600 * 24 * 60; 
+        this.#duracaoToken = 3600; 
         this.#payload = null;
     }
 

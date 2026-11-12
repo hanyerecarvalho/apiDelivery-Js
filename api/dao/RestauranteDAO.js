@@ -40,7 +40,7 @@ module.exports = class RestauranteDAO {
     update = async (objRestauranteModel) => {
         console.log("🟢 RestauranteDAO.update()");
 
-        const SQL = "UPDATE restaurantes SET nomeRestaurante, telefoneRestaurante, enderecoRestaurante = ? WHERE idRestaurante = ?;";
+        const SQL = "UPDATE restaurantes SET nomeRestaurante = ?, telefoneRestaurante = ?, enderecoRestaurante = ? WHERE idRestaurante = ?;";
         const params = [objRestauranteModel.nomeRestaurante, objRestauranteModel.telefoneRestaurante, objRestauranteModel.enderecoRestaurante, objRestauranteModel.idRestaurante];
 
         const pool = await this.#database.getPool();

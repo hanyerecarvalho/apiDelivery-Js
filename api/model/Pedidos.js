@@ -8,11 +8,11 @@ module.exports = class Pedidos {
         console.log("⬆️  Pedido.constructor()");
     }
 
-    getIdPedido() {
+    get idPedido() {
         return this.#idPedido;
     }
 
-    setIdPedido(novoIdPedido) {
+    set idPedido(novoIdPedido) {
 
         const parsed = Number(novoIdPedido);
 
@@ -26,11 +26,11 @@ module.exports = class Pedidos {
         return this.#idPedido = parsed;
     }
 
-    getValorTotal() {
+    get valorTotal() {
         return this.#valorTotal;
     }
     
-    setValorTotal(novoValorTotal) {
+    set valorTotal(novoValorTotal) {
         if (typeof novoValorTotal !== "number") {
             throw new Error("valorTotal deve ser um numero");
         }
@@ -38,14 +38,14 @@ module.exports = class Pedidos {
             throw new Error("valorTotal deve ser maior que 0");
         }
 
-        return this.#valorTotal = valor;
+        return this.#valorTotal = novoValorTotal;
     }
 
-    getIdCliente() {
+    get idCliente() {
         return this.#idCliente;
     }
 
-    setIdCliente(novoIdCliente) {
+    set idCliente(novoIdCliente) {
         if (typeof novoIdCliente !== "number") {
             throw new Error("idCliente deve ser um número");
         }
@@ -56,11 +56,11 @@ module.exports = class Pedidos {
         this.#idCliente = novoIdCliente;
     }
 
-    getIdRestaurante() {
+    get idRestaurante() {
         return this.#idRestaurante;
     }
 
-    setIdRestaurante(novoIdRestaurante) {
+    set idRestaurante(novoIdRestaurante) {
         if (typeof novoIdRestaurante !== "number") {
             throw new Error("idRestaurante deve ser um numero");
         }

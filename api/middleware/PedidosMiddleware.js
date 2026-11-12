@@ -14,13 +14,13 @@ module.exports = class PedidoMiddleware {
 
         const pedido = body.pedido;
 
-        if (!pedido.valorTotal === "" ||  pedido.valorTotal === null || pedido.valorTotal === undefined) {
+        if (typeof pedido.valorTotal !== "number" || !Number.isFinite(pedido.valorTotal) || pedido.valorTotal <= 0) {
             throw new ErrorResponse(400, "Erro na validação de dados", { message: "O campo 'valorTotal' é obrigatório!" });
         }
-        if (!idCliente) {
+        if (!Number.isInteger(pedido.idCliente) || pedido.idCliente <= 0) {
             throw new ErrorResponse(400, "Erro na validação de dados", { message: "O parâmetro 'idCliente' é obrigatório!" });
         }
-        if (!idRestaurante) {
+        if (!Number.isInteger(pedido.idRestaurante) || pedido.idRestaurante <= 0) {
             throw new ErrorResponse(400, "Erro na validação de dados", { message: "O parâmetro 'idRestaurante' é obrigatório!" });
         }
 

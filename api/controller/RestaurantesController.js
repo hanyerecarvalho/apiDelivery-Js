@@ -82,7 +82,7 @@ module.exports = class RestauranteControl {
             const nomeRestaurante = request.body.restaurante.nomeRestaurante;
             const telefoneRestaurante = request.body.restaurante.telefoneRestaurante;
             const enderecoRestaurante = request.body.restaurante.enderecoRestaurante;
-            const atualizou = await this.#restauranteService.updateRestaurante(restauranteId, nomeRestaurante, telefoneRestaurante, enderecoRestaurante);
+            const atualizou = await this.#restauranteService.updateRestaurante({ idRestaurante: restauranteId, nomeRestaurante, telefoneRestaurante, enderecoRestaurante });
 
             if (atualizou) {
                 return response.status(200).send({
@@ -119,11 +119,11 @@ module.exports = class RestauranteControl {
     destroy = async (request, response, next) => {
         console.log("🔵 RestauranteControle.destroy()");
         try {
-            const restauranteId = request.params.idPedido;
-            const excluiu = this.#restauranteService.deleteRestaurante(restauranteId);
+            const restauranteId = request.params.idRestaurante;
+            const excluiu = await this.#restauranteService.deleteRestaurante(restauranteId);
 
             if (excluiu) {
-                return response.status(204).send({
+                return response.status(200).send({
                     success: true,
                     message: 'Excluido com sucesso com sucesso',
                     data: {
