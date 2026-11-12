@@ -19,6 +19,8 @@ Esses itens descrevem a proposta; a implementação ainda não está disponível
 
 Veja também a [Delivery API em PHP](https://github.com/hanyerecarvalho/deliveryApi), construída com Slim Framework e MySQL.
 
+Veja também a [Delivery API em Python](https://github.com/hanyerecarvalho/apiDelivery-Flask), construida com Flask e MySQL.
+
 ## Autor
 
 [Hanyere Carvalho](https://github.com/hanyerecarvalho)
