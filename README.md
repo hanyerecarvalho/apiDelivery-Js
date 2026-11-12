@@ -1,4 +1,4 @@
-# Delivery API · JavaScript
+[# Delivery API · JavaScript
 
 Proposta de API REST para um sistema de delivery, desenvolvida para a disciplina de **Programação Avançada para Web (PAW)**.
 
@@ -24,3 +24,4 @@ Veja também a [Delivery API em Python](https://github.com/hanyerecarvalho/apiDe
 ## Autor
 
 [Hanyere Carvalho](https://github.com/hanyerecarvalho)
+]
